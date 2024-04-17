@@ -51,7 +51,7 @@
 	<h3>Breakpoints</h3>
 	<h4><em>scss/helpers/_breakpoints.scss</em></h4>
 	
-	<p>This SASS utility is an attempt to replicate the functionality of the <a href="https://get.foundation/sites/docs/media-queries.html">Foundation Breakpoint Mixin</a> and operates in much the same manner. It consists of three parts: a map of predefined <strong>$breakpoints</strong> along with <strong>breakpoint()</strong> and <strong>container()</strong> mixins.</p>
+	<p>This SASS utility is an attempt to replicate the functionality of the <a href="https://get.foundation/sites/docs/media-queries.html">Foundation Breakpoint Mixin</a> and operates in much the same manner. It consists of three parts: a map of predefined <strong>$breakpoints</strong> and <strong>$containers</strong> breakpoints, along with <strong>breakpoint()</strong> and <strong>container()</strong> mixins.</p>
 
 	<p><em><strong>Warning:</strong> These mixins cannot be deployed in a Modern Project style -- its SASS compiler is out-of-date and cannot the functions necessary to make this work. For now the recommendation is to continue to use foundation but to remove all imports save for the global styles.</em></p>
 
@@ -69,9 +69,19 @@ $breakpoints: (
 	xxlarge: 1440px,
 	xxxlarge: 1920px
 }
+
+$containers: (
+	xsmall: 0,
+	small: 360px,
+	medium: 720px,
+	large: 960px,
+	xlarge: 1152px,
+	xxlarge: 1296px,
+	xxxlarge: 1728px
+);
 	</code>
 
-	<p>These $breakpoints may be altered or added to as needed; the only requirement is that they should be listed in ascending size. (Certain parameters for the mixins require them to access the next largest breakpoint.)</p>
+	<p>These breakpoints may be altered or added to as needed; the only requirement is that they should be listed in ascending size. (Certain parameters for the mixins require them to access the next largest breakpoint.) Note that the container breakpoints have been adjusted down from the media breakpoings, mostly to account for the global margns we add to our layouts.</p>
 
 	<p>The breakpoint() and container() mixins are simple:</p>
 	  
@@ -90,6 +100,8 @@ $breakpoints: (
 	<p>If the $size parameter can be resolved to one of the defined values in the $breakpoints map, the mixin may be called with an optional <strong>$direction</strong> parameter which modifies the output:</p>
 
 	<code>
+<strong>until:</strong> @media screen and (max-width: [$size - 1px]) { ... }
+<strong>until:</strong> @containter (width &lt size - 1px) { ... }
 <strong>down:</strong> @media screen and (max-width: [next largest $size - 1px]) { ... }
 <strong>down:</strong> @container (width &lt; $size) { ... }
 <strong>only:</strong> @media screen and (min-width: $size) and (max-width: [next largest $size - 1px]) { ... }
