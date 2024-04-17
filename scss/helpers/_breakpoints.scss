@@ -1,0 +1,78 @@
+@use "sass:list";
+@use "sass:map";
+
+$breakpoints: (
+	xsmall: 0,
+	small: 400px,
+	medium: 768px,
+	large: 1024px,
+	xlarge: 1280px,
+	xxlarge: 1440px,
+	xxxlarge: 1920px
+);
+
+@mixin breakpoint($size, $direction: up) {
+	$keys: map-keys($breakpoints);
+	$values: map-values($breakpoints);
+	$index: index($keys, $size);
+	@if $index == null {
+		@media screen and (min-width: $size) {
+			@content;
+		}
+	} @else {
+		@if $direction == until {
+			@media screen and (max-width: calc(list.nth($values, $index) - 1px)) {
+				@content;
+			}
+		}
+		@if $direction == down {
+			@media screen and (max-width: calc(list.nth($values, $index + 1) - 1px)) {
+				@content;
+			}
+		}
+		@if $direction == only {
+			@media screen and (min-width: list.nth($values, $index)) and (max-width: calc(list.nth($values, $index + 1) - 1px)) {
+				@content;
+			}
+		}
+		@if $direction == up {
+			@media screen and (min-width: list.nth($values, $index)) {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin container($size, $direction: up) {
+	$keys: map-keys($breakpoints);
+	$values: map-values($breakpoints);
+	$index: index($keys, $size);
+	@if $index == null {
+		@container (width >= #{$size}) {
+			@content;
+		}
+	} @else {
+		@if $direction == until {
+			@container (width < #{list.nth($values, $index)}) {
+				@content;
+			}
+		}
+		@if $direction == down {
+			@container (width < #{list.nth($values, $index + 1)}) {
+				@content;
+			}
+		}
+
+		@if $direction == only {
+			@container (width >= #{list.nth($values, $index)}) and (width < #{list.nth($values, $index + 1)}) {
+				@content;
+			}
+		}
+		
+		@if $direction == up {
+			@container (width >= #{list.nth($values, $index)}) {
+				@content;
+			}
+		}
+	}
+}

@@ -1,0 +1,58 @@
+@use "sass:map";
+@import '_breakpoints';
+
+// stylelint-disable declaration-no-important
+
+.show-for-sr,
+.show-on-focus {
+	border: 0 !important;
+	clip: rect(0, 0, 0, 0) !important;
+	height: 0 !important;
+	overflow: hidden !important;
+	position: absolute !important;
+	white-space: nowrap !important;
+	width: 0 !important;
+}
+
+.show-on-focus {
+	&:focus,
+	&:focus-within {
+		clip: auto !important;
+		height: auto !important;
+		width: auto !important;
+		overflow: visible !important;
+		position: static !important;
+		white-space: normal !important;
+	}
+}
+
+// debug "#{$breakpoints}";
+@each $size, $width in $breakpoints {
+	@if $width != 0 {
+		.show-for-#{$size} {
+			@include breakpoint($size, until) {
+				display: none !important;
+			}
+		}
+		
+		.hide-for-#{$size} {
+			@include breakpoint($size) {
+				display: none !important;
+			}
+		}
+
+		.show-for-c-#{$size} {
+			@include container($size, until) {
+				display: none !important;
+			}
+		}
+		
+		.hide-for-c-#{$size} {
+			@include container($size) {
+				display: none !important;
+			}
+		}
+	}
+}
+
+// stylelint-enable declaration-no-important

@@ -1,0 +1,51 @@
+// Global Variables
+$toggle: '.br-toggle';
+
+// Default State
+
+.br-toggle { 
+
+	// Local Variables
+	$this: &;
+
+	// Styles
+
+	&__button {
+		appearance: none;
+		cursor: default;
+	}
+}
+
+// Activated State
+
+#{$toggle}--active {
+
+	// Local Variables
+	$this: &;
+
+	#{$toggle}__button {
+		cursor: pointer;
+	}
+
+	#{$toggle}__panel {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 500ms 0ms ease, visibility 0ms 500ms ease;
+		visibility: hidden;
+
+		&[aria-hidden='false'] {
+			grid-template-rows: 1fr;
+			transition: grid-template-rows 500ms 1ms ease, visibility 0ms 0ms ease;
+			visibility: visible;
+		}
+		
+		@media print {
+			grid-template-rows: 1fr;
+			visibility: visible;
+		}
+	}
+
+	#{$toggle}__content {
+		overflow: hidden;
+	}	
+}

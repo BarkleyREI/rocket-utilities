@@ -1,0 +1,34 @@
+// Global Variables
+$tab: '.br-tabs';
+
+// Default State
+
+.br-tabs { 
+
+	// Local Variables
+	$this: &;
+
+	// Styles
+}
+
+// Activated State
+
+#{$tab}--active {
+
+	// Local Variables
+	$this: &;
+
+	#{$tab}__content {
+		display: grid;
+		grid-template-columns: 100%;
+	}
+
+	#{$tab}__panel {
+		grid-area: 1 / 1;
+		visibility: hidden;
+
+		&[aria-hidden='false'] {
+			visibility: visible;
+		}
+	}
+}

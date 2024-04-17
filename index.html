@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Rocket Utilities</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="theme-color" content="#ea0c0c">
+
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="stylesheet" href="css/theme.min.css">
+
+</head>
+
+<body>
+<main>
+
+  <!-- introductory slide -->
+	
+  <section id="intro" class="intro">
+
+	<img src="img/lunar-lander.jpg" alt="" class="backdrop" aria-hidden="true">
+	  
+	<svg class="icon-rocket" viewBox="0 0 152 152"><title>BarkleyOKRP Logo</title><path d="M0,79.08V72.92a5,5,0,0,0,.11-.66,76.63,76.63,0,0,1,3-17.91A75.87,75.87,0,0,1,37,10.71,73.63,73.63,0,0,1,74.34.18a74.86,74.86,0,0,1,40.49,11.19A75.92,75.92,0,0,1,148,55.27a76.12,76.12,0,0,1-11.68,65.62,72.9,72.9,0,0,1-8.54,9.79,76.51,76.51,0,0,1-15.87,11.81,72.21,72.21,0,0,1-27.65,8.89,74.23,74.23,0,0,1-20.84-.44A72.52,72.52,0,0,1,38,141.87a75.66,75.66,0,0,1-24.1-22A78.49,78.49,0,0,1,6.56,107,75.41,75.41,0,0,1,.24,81.88C.17,81,.08,80,0,79.08Zm96.06,47.27-2.52-2.5a1.3,1.3,0,0,1-.37-.49c-.27-1.37-.51-2.74-.77-4.14l1.73-.45c0-.08.05-.12,0-.16-.15-.47-.31-1-.47-1.42A159.31,159.31,0,0,0,83.6,94a2.06,2.06,0,0,1-.21-1c0-5.36.09-10.72,0-16.08-.08-4.27-.27-8.54-.65-12.79-.47-5.21-1.06-10.41-1.8-15.59C79.81,40.75,78.29,33,76.45,25.34c-.28-1.18-.59-2.35-.89-3.52a1.33,1.33,0,0,0-.29.6,261.21,261.21,0,0,0-5.4,27.32,204.54,204.54,0,0,0-2.12,21.67c-.15,4.06-.18,8.12-.2,12.18,0,3.23,0,6.45.07,9.68a1.42,1.42,0,0,1-.17.59c-.84,1.67-1.72,3.34-2.55,5a154.13,154.13,0,0,0-7.43,17.76c-.24.68-.46,1.37-.7,2.1l1.81.48a8.07,8.07,0,0,0-.21,1.17,6,6,0,0,1-2.53,4.92c-.11.09-.21.21-.31.31l-.67.71h8.22c-.75-.73-1.39-1.32-2-2a.87.87,0,0,1-.24-.64c.2-1.25.44-2.5.68-3.82.34.07.64.11.94.18s.61.19,1,.3c1.12-6.58,1.8-13.24,4.27-19.5.28,5.68.61,11.33,1.46,17h3v2.14H74c0,1.11,0,2.13,0,3.15a1.43,1.43,0,0,1-.37.86c-.69.75-1.44,1.44-2.24,2.24h8.2c-.85-.83-1.58-1.54-2.31-2.27-.14-.14-.33-.33-.33-.5,0-1.14,0-2.29,0-3.5.54,0,1,0,1.45,0s.45-.12.44-.44c0-.54,0-1.08,0-1.7.78,0,1.49,0,2.19,0s.88-.18.93-.81c.37-4.71.78-9.42,1.16-14.14.06-.69.07-1.38.11-2.07,2.52,6.28,3.2,12.95,4.32,19.46l1.89-.47c.21,1.17.37,2.25.62,3.3a1.24,1.24,0,0,1-.42,1.37c-.6.53-1.14,1.13-1.81,1.79Z"/></svg>
+	  
+	<h1>Rocket Utilities <small>A Collection of Useful CSS and JS Utilities for BarkleyOKRP's Front-End Web Developers</small></h1>
+
+	<div class="author">
+	  <img src="img/dwhite.jpg" alt="David White">
+	  <p>
+		<strong>David White</strong><br>
+		Associate Director of User Interface Development<br>
+		BarkleyOKRP
+	  </p>
+	</div>	  
+	
+  </section>
+  
+  <!-- JAVASCRIPT UTILITIES -->	
+  
+  <section id="css" class="separator">
+	<h2>CSS Utilities</h2>
+  </section>
+  
+  <!-- Breakpoints -->
+  
+  <section id="breakpoints" class="slide">
+	
+	<h3>Breakpoints</h3>
+	<h4><em>scss/helpers/_breakpoints.scss</em></h4>
+	
+	<p>This SASS utility is an attempt to replicate the functionality of the <a href="https://get.foundation/sites/docs/media-queries.html">Foundation Breakpoint Mixin</a> and operates in much the same manner. It consists of three parts: a map of predefined <strong>$breakpoints</strong> along with <strong>breakpoint()</strong> and <strong>container()</strong> mixins.</p>
+
+	<p><em><strong>Warning:</strong> These mixins cannot be deployed in a Modern Project style -- its SASS compiler is out-of-date and cannot the functions necessary to make this work. For now the recommendation is to continue to use foundation but to remove all imports save for the global styles.</em></p>
+
+	<p><em><strong>Warning:</strong> To deploy these mixins in the Component Library Project style you will need to update the list of excluded at-rules on line 15 of _config/.stylelintrc.json to include use, else, and container.</em></p>
+
+	<p>The predefined $breakpoints are:</p>
+
+	<code>
+$breakpoints: (
+	xsmall: 0,
+	small: 400px,
+	medium: 768px,
+	large: 1024px,
+	xlarge: 1280px,
+	xxlarge: 1440px,
+	xxxlarge: 1920px
+}
+	</code>
+
+	<p>These $breakpoints may be altered or added to as needed; the only requirement is that they should be listed in ascending size. (Certain parameters for the mixins require them to access the next largest breakpoint.)</p>
+
+	<p>The breakpoint() and container() mixins are simple:</p>
+	  
+	<code>
+@include breakpoint($size, <em>$direction</em>) { ... }
+@include container($size, <em>$direction</em>) { ... }
+	</code>
+
+	<p>The mixins must be called with a mandatory <strong>$size</strong> parameter, which can be any of the defined values in the $breakpoints map, or an arbitrary string. In either case, the output will be:</p>
+
+	<code>
+@media screen and (min-width: $size) { ... }
+@container and (width > $size) { ... }
+	</code>
+
+	<p>If the $size parameter can be resolved to one of the defined values in the $breakpoints map, the mixin may be called with an optional <strong>$direction</strong> parameter which modifies the output:</p>
+
+	<code>
+<strong>down:</strong> @media screen and (max-width: [next largest $size - 1px]) { ... }
+<strong>down:</strong> @container (width &lt; $size) { ... }
+<strong>only:</strong> @media screen and (min-width: $size) and (max-width: [next largest $size - 1px]) { ... }
+<strong>only:</strong> @container and (width &gt;= $size) and (width &lt; [next largest $size]) { ... }
+<strong>up:</strong> @media screen and (min-width: $size) { ... }
+<strong>up:</strong> @container and (width &gt;= $size) { ... }
+	</code>
+
+	<p>Please note that the output will be broken if you use a direction other than 'up' with the ultimate $breakpoint.</p>
+
+  </section>
+
+  <!-- Easings -->
+
+  <section id="easings" class="slide">
+	
+	<h3>Easings</h3>
+	<h4><em>scss/helpers/_easings.scss</em></h4>
+
+	<p>This SASS utility converts the predefined cubic-bezier curves from <a href="https://easings.net/">easings.net</a> and turns them into SASS variables. The variable names are identical to the system names. That's it.</p>
+
+  </section>
+  
+  <!-- Visibility -->
+  
+  <section id="breakpoints" class="slide">
+	
+	<h3>Visibility</h3>
+	<h4><em>scss/helpers/_breakpoints.scss<br>scss/helpers/_visibility.scss</em></h4>
+	
+	<p>This SASS utility is an attempt to replicate the functionality of the <a href="https://get.foundation/sites/docs/visibility.html">Foundation Visibility Classes</a> and operates in much the same manner. It is dependent on the <a href="#breakpoints">breakpoints</a> utility as it relies on its map of predefined <strong>$breakpoints</strong>.</p>
+
+	<p><em><strong>Warning:</strong> These mixins cannot be deployed in a Modern Project style -- its SASS compiler is out-of-date and cannot the functions necessary to make this work. For now the recommendation is to continue to use foundation but to remove all imports save the global styles and visibility classes.</em></p>
+
+	<p><em><strong>Warning:</strong> To deploy these mixins in the Component Library Project style you will need to update the list of excluded at-rules on line 15 of _config/.stylelintrc.json to include use, else, and container.</em></p>	
+	
+	<p>When compiled, the utility adds the following classes to the stylesheet:</p>
+
+	<ul>
+	  <li><strong>show-for-sr</strong> which visually hides an element without toggling it to <em>display: none</em> or removing it from the document tree</li>
+	  <li><strong>show-on-focus</strong> which visually hides an element without toggling it to <em>display: none</em> or removing it from the document tree, and reveals it only when the element or one of its children receives focus</li>
+	</ul>
+
+	<p>It adds the following classes for each $breakpoints with a width greater than 0:</p>
+	
+	<ul>
+	  <li><strong>show-for-[$size]</strong> which applies <em>display: none</em> to an element at all sizes below the indicated $breakpoint</li>
+	  <li><strong>hide-for-[$size]</strong> which applies <em>display: none</em> at the indicated $breakpoint</li>
+	  <li><strong>show-for-c-[$size]</strong> and <strong>hide-for-c-[$size]</strong> which use container queries instead of media queries</li>
+	</ul>
+
+  </section>
+  
+  <!-- JAVASCRIPT UTILITIES -->
+	
+  <section id="css" class="separator">
+	<h2>Javascript Utilities</h2>
+  </section>
+
+  <!-- tabs -->
+
+  <section id="tabs" class="slide">
+
+	<h3>Rocket Tabs</h3>
+	<h4><em>ejs/plugins/br-tabs.js<br>scss/plugins/_br-tabs.scss</em></h4>
+
+	<p>	This is an extremely minimal section tab script intended to get you the most bang for your buck and to avoid the hassles of dealing with <a href="https://get.foundation/sites/docs/tabs.html">Foundation Tabs</a>. It implements UI best practices outlined by <a href="https://adrianroselli.com/">Adrian Roselli</a> and <a href="https://inclusive-components.design/tabbed-interfaces/">Heydon Pickering</a>.</p>
+
+<div class="br-tabs" id="tab">
+
+  <ul class="br-tabs__navigation">
+	<li class="br-tabs__item"><a href="#tab-structure" class="br-tabs__link" id="tab-1">Structure</a></li>
+	<li class="br-tabs__item"><a href="#tab-interactions" class="br-tabs__link" id="tab-2">Interactions</a></li>
+	<li class="br-tabs__item"><a href="#tab-options" class="br-tabs__link" id="tab-3">Options</a></li>
+	<li class="br-tabs__item"><a href="#tab-methods" class="br-tabs__link" id="tab-4">Methods</a></li>
+  </ul>
+
+  <div class="br-tabs__content">
+	<div class="br-tabs__panel" id="tab-structure" aria-labelledby="tab-1">
+	  
+	  <p>The most minimal version of this component looks like this:</p>
+
+	  <code>
+&lt;div class="br-tabs"&gt;
+  &lt;ul class="br-tabs__navigation"&gt;
+    &lt;li class="br-tabs__item"&gt;&lt;a href="#tab-panel-1" class="br-tabs__link" id="tab-1"&gt;First Tab&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;div class="br-tabs__content"&gt;
+	&lt;div class="br-tabs__panel" id="tab-panel-1" aria-labelledby="tab-1"&gt;
+	  &lt;p&gt;Content&lt;/p&gt;	  
+	&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  
+&lt;script&gt;
+window.addEventListener('load', (event) => {
+  document.querySelectorAll('.br-tabs').forEach( function( element ) {
+    element.tab = Object.assign(new BRTabs(element));
+  });
+});
+&lt;/script&gt;
+	  </code>
+
+	  <p>The top-level <strong>br-tab</strong> does not require a unique ID but should probably have one. The component should not be nested.
+
+	  <p>The <strong>br-tabs__navigation</strong>, <strong>br-tabs__item</strong>, <strong>br-tabs__link</strong> and <strong>br-tabs__panel</strong> items have appropriate <em>aria-hidden</em> <em>aria-selected</em>, <em>role</em> and <em>tabindex</em> values applied after the component is activated.
+
+	  <p>The <strong>br-tabs__link</strong> should anchor to a unique ID on the corresponding <strong>br-tabs__panel</strong> and should have a unique ID of its own.</p>
+
+	  <p><strong>br-tabs__panel</strong> element should have a unique ID and an <em>aria-labelledby</em> attribute pointing back to the appropriate <strong>br-tabs__link</strong>.</p>
+
+	  <p>These elements may be swapped out for other element types (such as &lt;section&gt;) as needed, but it is important to preserve the hierarchy and class names.</p>	  
+
+	</div>
+	<div class="br-tabs__panel" id="tab-interactions" aria-labelledby="tab-2">
+
+	  <p>Activating a link via click displays the panel with the corresponding ID.</p>
+
+	  <p>Currently inactive tabs are not keyboard focusable.</p>
+
+	  <p>Using the up, down, left and right arrow keys while focused on a link navigates you to the next link in the sequence and displays the corresponding panel.</p>
+
+	  <p>Deep linking can be achieved by adding a hash to the URL; the panel with the corresponding ID will be opened when the component initialized.</p>	  
+	  
+	</div>
+	<div class="br-tabs__panel" id="tab-options" aria-labelledby="tab-3">
+
+	  <ul>
+		<li><strong>open</strong> <em>(default: 0)</em>: Indicates which panel to open when initially activated. May be an ineger or string. If an integer, open the panel whose index corresponds to that integer; if a string, open the panel whose ID corresponds to that string.</li>
+	  </ul>
+	  
+	</div>
+	<div class="br-tabs__panel" id="tab-methods" aria-labelledby="tab-4">
+
+	  <ul>
+		<li><strong>[node].tab.destroy()</strong>: Destructures the entire tab component.</li>
+		<li><strong>[node].tab.open(panel)</strong>: May take an integer or string. If an integer, open the panel whose index corresponds to that integer; if a string, open a panel the panel whose ID corresponds to that string.</li>
+	  </ul>
+
+	  
+	</div>
+  </div>
+
+</div>  	
+	
+  </section>
+		  
+  <!-- toogle -->
+  
+  <section id="accordion" class="slide">
+	
+	<h3>Rocket Toggle</h3>
+	<h4><em>ejs/plugins/br-toggle.js<br>scss/plugins/_br-toggle.scss</em></h4>
+	
+	<p>This is an extremely minimal section toggling script intended to get you the most bang for your buck and to avoid the hassles of dealing with <a href="https://get.foundation/sites/docs/accordion.html">Foundation Accordions</a>. It implements UI best practices outlined by <a href="https://adrianroselli.com/">Adrian Roselli</a> and <a href="https://inclusive-components.design/collapsible-sections/">Heydon Pickering</a>; and uses a grid-based auto height transition trick as explained by <a href="https://keithjgrant.com/posts/2023/04/transitioning-to-height-auto/">Keith J. Grant</a>.</p>
+
+	<div class="accordion br-toggle" id="accordion-1">
+
+	  <h4><button class="br-toggle__button" id="toggle-structure" disabled>Structure</button></h3>  
+	  
+	  <div class="br-toggle__panel" aria-labelledby="toggle-structure">
+		<div class="br-toggle__content">
+
+		  <p>The most minimal version of this component looks like this:</p>
+  
+		  <code>
+&lt;div class="br-toggle"&gt;
+  &lt;button class="br-toggle__button" id="toggle-1" disabled&gt;Button&lt;/button&gt;
+  &lt;div class="br-toggle__panel" aria-labelledby="toggle-1" &gt;
+    &lt;div class="br-toggle__content"&gt;
+      &lt;p&gt;Content&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+window.addEventListener('load', (event) => {
+  document.querySelectorAll('.br-toggle').forEach( function( element ) {
+    element.toggle = Object.assign(new BRToggle(element, { options }));
+  });
+});
+&lt;/script&gt;
+		  </code>
+
+		  <p>The top-level <strong>br-toggle</strong> does not require a unique ID but should probably have one. The component may be nested (but probably shouldn't be).</p>
+
+		  <p>The <strong>br-toggle__button</strong> should be <em>disabled</em> by default (and you should include styling to make sure it looks correct in those instances. The <em>disabled</em> attribute is removed when the component is activated, and <em>aria-label</em> and <em>aria-expanded</em> attributes are added.
+
+		  <p>The <strong>br-toggle__panel</strong> element should be <em>aria-labelledby</em> the appropriate <strong>br-toggle__button</strong>. Attributes of <em>role="region"</em> and <em>aria-hidden="true"</em> are added when the component is activated.</p>
+
+		  <p>These elements may be swapped out for other element types (such as &lt;section&gt;) as needed, with the exception of the <strong>br-toggle__button</strong> element.</p>
+
+		  <p>Please note that the default styling for this is excessively minimal to allow for maximum flexibility.</p>
+		  
+		</div>
+	  </div>
+
+	  <h4><button class="br-toggle__button" id="toggle-interactions" disabled>Interactions</button></h4>
+
+	  <div class="br-toggle__panel" aria-labelledby="toggle-interactions">
+		<div class="br-toggle__content">
+
+		  <ul>
+			<li>Activating the button via click, enter, or space bar toggles the state of the next adjacent section. If <em>accordion</em> is true, any other open sections are closed.</li>
+			<li>Using the up and down arrow keys while focused on a button navigates you to the next button in the current toggle (but not into or out of nested toggles).</li>
+			<li>Deep linking can be achieved by adding a hash to the URL; the panel associated with the button at the corresponding ID will be opened when the component initializes.</li>
+		  </ul>
+		  
+		</div>
+	  </div>
+
+	  <h4><button class="br-toggle__button" id="toggle-options" disabled>Options</button></h4>
+
+	  <div class="br-toggle__panel" aria-labelledby="toggle-options">
+		<div class="br-toggle__content">
+
+		  <ul>
+			<li><strong>accordion</strong> <em>(default: true)</em>: Indicates whether this is an accordion (where only one item may be open at a time) or a group of individually collapsible sections. At desktop resolutions (1024px+) the first item in an accordion is opened by default unless this is overruled by other options.</li>
+			<li><strong>open</strong> <em>(default: 0)</em>: Indicates which panel to open when initially activated. May be a boolean, integer, or string. If <em>false</em> do not open anything; if an integer, open the panel whose index corresponds to that integer; if a string, open a the panel whose ID corresponds to that string (# not required).</li>
+		  </ul>
+		  
+		</div>
+	  </div>
+
+	  <h4><button class="br-toggle__button" id="toggle-methods" disabled>Methods</button></h4>
+
+	  <div class="br-toggle__panel" aria-labelledby="toggle-methods">
+		<div class="br-toggle__content">
+
+		  <ul>
+			<li><strong>[node].toggle.closeAll()</strong>: Toggle all panels closed.</li>
+			<li><strong>[node].toggle.destroy()</strong>: Destructures the entire toggle component.</li>
+			<li><strong>[node].toggle.open(panel)</strong>: May take an integer or string. If an integer, open the panel whose index corresponds to that integer; if a string, open a panel the panel whose ID corresponds to that string.</li>
+		  </ul>
+		  
+		</div>
+	  </div>
+	  
+	</div>	
+	
+  </section>
+
+</main>
+
+<script src="js/main.min.js"></script>
+
+</body>
+</html>
