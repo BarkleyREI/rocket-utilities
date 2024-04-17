@@ -11,6 +11,16 @@ $breakpoints: (
 	xxxlarge: 1920px
 );
 
+$containers: (
+	xsmall: 0,
+	small: 360px,
+	medium: 720px,
+	large: 960px,
+	xlarge: 1152px,
+	xxlarge: 1296px,
+	xxxlarge: 1728px
+);
+
 @mixin breakpoint($size, $direction: up) {
 	$keys: map-keys($breakpoints);
 	$values: map-values($breakpoints);
@@ -19,7 +29,8 @@ $breakpoints: (
 		@media screen and (min-width: $size) {
 			@content;
 		}
-	} @else {
+	}
+	@else {
 		@if $direction == until {
 			@media screen and (max-width: calc(list.nth($values, $index) - 1px)) {
 				@content;
@@ -44,14 +55,15 @@ $breakpoints: (
 }
 
 @mixin container($size, $direction: up) {
-	$keys: map-keys($breakpoints);
-	$values: map-values($breakpoints);
+	$keys: map-keys($containers);
+	$values: map-values($containers);
 	$index: index($keys, $size);
 	@if $index == null {
 		@container (width >= #{$size}) {
 			@content;
 		}
-	} @else {
+	}
+	@else {
 		@if $direction == until {
 			@container (width < #{list.nth($values, $index)}) {
 				@content;
@@ -62,15 +74,46 @@ $breakpoints: (
 				@content;
 			}
 		}
-
 		@if $direction == only {
 			@container (width >= #{list.nth($values, $index)}) and (width < #{list.nth($values, $index + 1)}) {
 				@content;
 			}
 		}
-		
 		@if $direction == up {
 			@container (width >= #{list.nth($values, $index)}) {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin namedcontainer($name, $size, $direction: up) {
+	$keys: map-keys($containers);
+	$values: map-values($containers);
+	$index: index($keys, $size);
+	@if $index == null {
+		@container $name (width >= #{$size}) {
+			@content;
+		}
+	}
+	@else {
+		@if $direction == until {
+			@container $name (width < #{list.nth($values, $index)}) {
+				@content;
+			}
+		}
+		@if $direction == down {
+			@container $name (width < #{list.nth($values, $index + 1)}) {
+				@content;
+			}
+		}
+		@if $direction == only {
+			@container $name (width >= #{list.nth($values, $index)}) and (width < #{list.nth($values, $index + 1)}) {
+				@content;
+			}
+		}
+		@if $direction == up {
+			@container $name (width >= #{list.nth($values, $index)}) {
 				@content;
 			}
 		}
