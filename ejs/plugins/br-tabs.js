@@ -6,6 +6,7 @@
 // Version 0.8 (2023/11/14): Multiple tab support
 // Version 0.9 (2023/11/29): Nomenclature
 // Version 1.0 (2024/04/16): Destructor
+// Version 1.1 (2024/05/01): Check for valid selectors in open()
 
 ;(function (window) {
 
@@ -153,6 +154,7 @@
 			switch( typeof(tab) ) {
 				case 'string':
 					if(tab.indexOf('#') > -1) {
+						try { _this.buttons.indexOf(_this.element.querySelector(tab)) } catch { break };
 						target = _this.panels.indexOf(_this.element.querySelector(tab));
 					}
 					break;

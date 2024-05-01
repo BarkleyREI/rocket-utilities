@@ -6,7 +6,8 @@
 // Version 0.7 (2023/11/08): Remove requirement that one accordion item must be open at all times
 // Version 0.8 (2023/11/09): Open parent accordions when nested
 // Version 0.9 (2023/11/29): Nomenclature
-// VErsion 1.0 (2024/04/16): Destructor
+// Version 1.0 (2024/04/16): Destructor
+// Version 1.1 (2024/05/01): Check for valid selectors in open()
 
 ;(function (window) {
 
@@ -173,7 +174,8 @@
 			switch( typeof(tab) ) {
 				case 'string':
 					if(tab.indexOf('#') > -1) {
-						target = _this.buttons.indexOf(_this.element.querySelector(tab));
+						try { _this.buttons.indexOf(_this.element.querySelector(tab)) } catch { break };
+						target = _this.buttons.indexOf(_this.element.querySelector(tab))
 					}
 					break;
 				case 'number':
