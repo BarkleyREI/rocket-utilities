@@ -154,7 +154,7 @@
 			switch( typeof(tab) ) {
 				case 'string':
 					if(tab.indexOf('#') > -1) {
-						try { _this.buttons.indexOf(_this.element.querySelector(tab)) } catch { break };
+						try { _this.panels.indexOf(_this.element.querySelector(tab)) } catch { break };
 						target = _this.panels.indexOf(_this.element.querySelector(tab));
 					}
 					break;
