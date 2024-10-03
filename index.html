@@ -307,6 +307,7 @@ window.addEventListener('load', (event) => {
 
 		  <ul>
 			<li>Activating the button via click, enter, or space bar toggles the state of the next adjacent section. If <em>accordion</em> is true, any other open sections are closed.</li>
+			<li>If <em>navigation</em> is set, buttons are also activated when the user mouses over them, and all panels are closed when the user mouses out of the toggle.</li>
 			<li>Using the up and down arrow keys while focused on a button navigates you to the next button in the current toggle (but not into or out of nested toggles).</li>
 			<li>Deep linking can be achieved by adding a hash to the URL; the panel associated with the button at the corresponding ID will be opened when the component initializes.</li>
 		  </ul>
@@ -321,6 +322,7 @@ window.addEventListener('load', (event) => {
 
 		  <ul>
 			<li><strong>accordion</strong> <em>(default: true)</em>: Indicates whether this is an accordion (where only one item may be open at a time) or a group of individually collapsible sections. At desktop resolutions (1024px+) the first item in an accordion is opened by default unless this is overruled by other options.</li>
+			<li><strong>navigation</strong> <em>(default: null)</em>: If set to an integer, uses that as a minimum screen size to trigger hover-based navigation (mouseenter/mouseleave).</li>
 			<li><strong>open</strong> <em>(default: 0)</em>: Indicates which panel to open when initially activated. May be a boolean, integer, or string. If <em>false</em> do not open anything; if an integer, open the panel whose index corresponds to that integer; if a string, open a the panel whose ID corresponds to that string (# not required).</li>
 		  </ul>
 		  

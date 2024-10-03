@@ -8,6 +8,7 @@
 // Version 0.9 (2023/11/29): Nomenclature
 // Version 1.0 (2024/04/16): Destructor
 // Version 1.1 (2024/05/01): Check for valid selectors in open()
+// Version 1.2 (2024/10/03): Add navigation flag to activate mousenter/mouseleave
 
 ;(function (window) {
 
@@ -15,10 +16,12 @@
 
 	// BRToggleDefaults Options: 
 	// - accordion: if true, opening one item closes all others
+	// - navigation: if null, do nothing; if a sets a minimum media query size for hover behavior
 	// - open: on activation, if false, do not open panel; if a string or integer, open that panel
 
 	var BRToggleDefaults = {
 		accordion: true,
+		navigation: null,
 		open: 0
 	};
 
@@ -86,6 +89,13 @@
 				element.addEventListener('click', _this.click.bind(_this));
 				element.addEventListener('keydown', _this.keydown.bind(_this));
 			});
+			if(_this.options.navigation !== null) {
+				_this.navmql = window.matchMedia('(min-width: ' + _this.options.navigation + 'px)');
+				_this.buttons.forEach( function(element) {
+					element.addEventListener('mouseenter', _this.mouseenter.bind(_this));
+				});
+				_this.element.addEventListener('mouseleave', _this.mouseleave.bind(_this));
+			}
 		}
 
 		// click(event): 
@@ -160,6 +170,27 @@
 					_this.buttons[target].focus();
 					_this.open(target);
 				}
+			}
+		}
+
+		// mouseenter(event)
+		// - if above navigation threshold, open panel identified by button being moused into
+
+		mouseenter(event) {
+			var _this = this;
+			if (_this.navmql.matches) {
+				let target = _this.buttons.indexOf(event.currentTarget);
+				_this.open(target);
+			}
+		}
+
+		// mouseleave()
+		// - if above navigation threshold close all panels when mousing out of accordion element
+
+		mouseleave() {
+			var _this = this;
+			if (_this.navmql.matches) {
+				_this.closeAll();
 			}
 		}
 
